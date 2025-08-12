@@ -25,7 +25,7 @@
     "source=${localWorkspaceFolder}/uploads,target=/workspace/uploads,type=bind",
     "source=${localWorkspaceFolder}/container_data,target=/workspaces/contenedores/container_data,type=bind"
   ],
-  "postCreateCommand": "sudo groupadd -f docker && sudo usermod -aG docker node && sudo chown root:docker /var/run/docker.sock && sudo chmod 660 /var/run/docker.sock && sudo mkdir -p /workspace/data /workspace/uploads /workspaces/contenedores/container_data && sudo chown -R node:node /workspace/data /workspace/uploads /workspaces/contenedores/container_data && sudo chmod -R 777 /workspace/data /workspace/uploads /workspaces/contenedores/container_data && (cd server && npm install) || echo 'Directorio server no encontrado, se instalará después'",
-  "postStartCommand": "bash -c 'rm -rf ~/.cache/* 2>/dev/null || true && chmod +x *.sh 2>/dev/null || true && bash /workspaces/contenedores/inicio.sh && exec tail -f /dev/null'",
+  "postCreateCommand": "sudo groupadd -f docker && sudo usermod -aG docker node && sudo chown root:docker /var/run/docker.sock && sudo chmod 660 /var/run/docker.sock && sudo mkdir -p /workspace/data /workspace/uploads /workspaces/contenedores/container_data && sudo chown -R node:node /workspace/data /workspace/uploads /workspaces/contenedores/container_data && sudo chmod -R 777 /workspace/data /workspace/uploads /workspaces/contenedores/container_data && chmod +x *.sh 2>/dev/null || true && (cd server && npm install) || echo 'Directorio server no encontrado, se instalará después'",
+  "postStartCommand": "bash /workspaces/contenedores/inicio.sh",
   "remoteUser": "node"
 }
