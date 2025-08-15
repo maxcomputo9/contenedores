@@ -6,6 +6,9 @@
       "VARIANT": "20-bullseye"
     }
   },
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
   "customizations": {
     "vscode": {
       "settings": {
@@ -20,10 +23,9 @@
   "forwardPorts": [3000],
   "runArgs": ["--init"],
   "mounts": [
-    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
     "source=${localWorkspaceFolder}/container_data,target=/workspaces/contenedores/container_data,type=bind,consistency=cached"
   ],
-  "postCreateCommand": "sudo groupadd -f docker && sudo usermod -aG docker node && sudo chown root:docker /var/run/docker.sock && sudo chmod 660 /var/run/docker.sock && chmod +x *.sh 2>/dev/null || true && sudo apt-get update && sudo apt-get install -y unzip wget curl",
+  "postCreateCommand": "chmod +x *.sh 2>/dev/null || true && sudo apt-get update && sudo apt-get install -y unzip wget curl && npm install",
   "postStartCommand": "bash inicio.sh",
   "remoteUser": "node"
 }
