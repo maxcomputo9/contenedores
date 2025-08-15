@@ -2,18 +2,13 @@
   "name": "Node.js & Docker",
   "build": {
     "dockerfile": "Dockerfile",
-    "args": {
-      "VARIANT": "20-bullseye"
-    }
+    "args": { "VARIANT": "20-bullseye" }
   },
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   },
   "customizations": {
     "vscode": {
-      "settings": {
-        "terminal.integrated.defaultProfile.linux": "bash"
-      },
       "extensions": [
         "ms-azuretools.vscode-docker",
         "esbenp.prettier-vscode"
@@ -25,7 +20,7 @@
   "mounts": [
     "source=${localWorkspaceFolder}/container_data,target=/workspaces/contenedores/container_data,type=bind,consistency=cached"
   ],
-  "postCreateCommand": "chmod +x *.sh 2>/dev/null || true && sudo apt-get update && sudo apt-get install -y unzip wget curl && npm install",
+  "postCreateCommand": "chmod +x *.sh 2>/dev/null || true && sudo apt-get update && sudo apt-get install -y tmux unzip wget curl",
   "postStartCommand": "bash inicio.sh",
   "remoteUser": "node"
 }
