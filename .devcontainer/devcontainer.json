@@ -9,6 +9,9 @@
   },
   "customizations": {
     "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
       "extensions": [
         "ms-azuretools.vscode-docker",
         "esbenp.prettier-vscode"
